@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Landing Page</title>
+</head>
+<body>
+    <style>
+        body{
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #333;
+            user-select: none;
+        }
+        header,footer{
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 25px 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo{
+            display: flex;
+            flex-direction: row;
+            position: fixed;
+            z-index: 11;
+        }
+        .logo h5{
+            margin: 29px 0px;
+            color: #22ee6d;
+            font-weight:bolder;
+            font-size: x-large;
+        }
+        .logo img{
+            width: 50px;
+            height: 50px;
+            margin: 20px 20px;
+        }
+        h1{
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        h4{
+            font-size: 2em;
+            margin-bottom: 20px;
+
+        }
+        .pricing-section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 0;
+        }
+        .pricing-table{
+            display: flex;
+            gap: 50px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .plan{
+            background: aliceblue;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 30px;
+            flex: 1;
+            transition: transform 0.3 ease,box-shadow 0.3s ease;
+        }
+        .plan:hover{
+            transform: translateY(-7px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            background-color: #f5f5f5;
+        }
+        .plan.free{
+            background: #f0f0f0;
+            border: 2px solid #999;
+        }
+        .plan.popular{
+            background: #e6f2ff;
+            border: 2px solid #5cb85c;
+
+
+        }
+        .plan.pro{
+            background: #f0f0f0;
+            border: 2px solid #337ab7;
+        }
+        h2{
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .price{
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .currency{
+            font-size: 18px;
+            vertical-align: super;
+            
+        }
+        .unit{
+            font-size: 16px;
+            color: #777;
+        }
+        .features{
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease;
+
+        }
+        .features.show-features{
+            height: auto;
+        }
+        .features li{
+            padding: 8px 0;
+            color: #333;
+            font-size: 15px;
+        }
+        .features li.disabled{
+            color: #e27b7b;
+            text-decoration: line-through;
+        }
+        .button{
+            background: #69ded8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3 ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .button:hover{
+            background: #03ffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width:760px) {
+            .pricing-table{
+                flex-direction: column;
+                width: 100%;
+            }    
+            .plan{
+                margin: 20px;
+            }
+
+        }
+    </style>
+    <header>
+        
+        <div class="logo"><img src="https://th.bing.com/th/id/OIP.rhHAGL2tIr2iG1oJVIFsPgHaHa?">
+            <h5>XYZ Company</h5>
+        </div>
+        <h1>
+            Plan & Pricing
+        </h1>
+        <h4>
+            Choose the plan that best suits your needs.
+        </h4>
+    </header>
+    <main>
+        <section class="pricing-section">
+            <div class="pricing-table">
+                <div class="plan free" onclick="toggleFeatures(this)">
+                    <h2>Free</h2>
+                    <div class="price">
+                        <span class="currency">₹</span>0
+                        <span class="unit">/month</span>
+                    </div>
+                    <ul class="features" id="features-free">
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                        <li class="disabled">
+                            Feature 4
+                        </li>    
+                    </ul>
+                    <button class="button">Sign Up</button>
+                </div>
+                <div class="plan popular" onclick="toggleFeatures(this)">
+                    <h2>Basic</h2>
+                    <div class="price">
+                        <span class="currency">₹</span>300
+                        <span class="unit">/month</span>
+                    </div>
+                    <ul class="features" id="features-basic">
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                        <li>Feature 4</li>
+                    </ul>
+                    <button class="button">Choose Plan</button>
+                </div>
+                <div class="plan pro" onclick="toggleFeatures(this)" aria-expanded="false">
+                    <h2>Pro</h2>
+                    <div class="price">
+                        <span class="currency">₹</span>500
+                        <span class="unit">/month</span>
+                    </div>
+                    <ul class="features" id="features-pro">
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                        <li>Feature 4</li>
+                        <li>Feature 5</li>
+                        <li>Feature 6</li>   
+                    </ul>
+                    <button class="button">Choose Plan</button>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 XYZ Company. All rights reserved.</p>
+    </footer>
+    
+</body>
+<script>
+    function toggleFeatures(plan){
+        const featureslist=plan.querySelector('.features');
+        featureslist.classList.toggle('show-features');
+        plan.classList.toggle('active');
+        featureslist.style.transition='height 0.3s ease';
+    }
+</script>
+</html>
